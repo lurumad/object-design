@@ -12,7 +12,7 @@ namespace ObjectDesign.Tests
         public void not_allow_longitude_could_be_greater_than_180()
         {
             Action sut = () => new Position(Latitude.FromScalar(-100), Longitude.FromScalar(240));
-            sut.Should().Throw<ArgumentException>().WithMessage(CoreStrings.InvalidLongitude);
+            sut.Should().Throw<ArgumentException>().WithMessage(CoreStrings.InvalidLatitude);
         }
 
         [Fact]

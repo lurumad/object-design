@@ -12,8 +12,6 @@ namespace ObjectDesign.Tests
         {
             var order = Order.Place();
             order.Cancel();
-            order.Events.Should().HaveCount(2);
-            order.Events.ElementAt(0).Should().BeOfType<OrderOpened>();
             order.Events.ElementAt(1).Should().BeOfType<OrderCancelled>();
         }
     }

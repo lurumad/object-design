@@ -9,6 +9,7 @@ namespace ObjectDesign.CreatingObjects.NamedConstructors
         public Hue(double value)
         {
             Ensure.Argument.Is(value >= 0 && value <= 360, "Hue value must be between 0 and 360.");
+            this.value = value;
         }
 
         public static Hue FromScalar(double value)

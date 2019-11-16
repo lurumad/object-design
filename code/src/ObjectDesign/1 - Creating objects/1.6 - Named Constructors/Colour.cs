@@ -1,16 +1,21 @@
-﻿namespace ObjectDesign.CreatingObjects.NamedConstructors
+﻿using System.Collections.Generic;
+
+namespace ObjectDesign.CreatingObjects.NamedConstructors
 {
+    /// <summary>
+    /// Represents a colour to be displayed on a screen with 24-bit colour depth.
+    /// </summary>
     public class Colour
     {
-        private readonly Intensity red;
-        private readonly Intensity green;
-        private readonly Intensity blue;
+        private readonly byte red;
+        private readonly byte green;
+        private readonly byte blue;
 
-        public Colour(int red, int green, int blue)
+        public Colour(byte red, byte green, byte blue)
         {
-            this.red = (Intensity)red;
-            this.green = (Intensity)green;
-            this.blue = (Intensity)blue;
+            this.red = red;
+            this.green = green;
+            this.blue = blue;
         }
     }
 }
