@@ -4,19 +4,21 @@ namespace ObjectDesign.CreatingObjects.TrackChangesRecordEvents
 {
     public class Order
     {
+        internal OrderId id;
         internal OrderStatus status;
         private readonly List<IEvent> events = new List<IEvent>();
         public IReadOnlyCollection<IEvent> Events => events;
 
-        private Order()
+        private Order(OrderId id)
         {
+            this.id = id;
             status = OrderStatus.Open;
             events.Add(OrderOpened.Create());
         }
 
-        public static Order Place()
+        public static Order Place(OrderId id)
         {
-            return new Order();
+            return new Order(id);
         }
 
         public void Cancel()

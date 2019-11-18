@@ -11,8 +11,16 @@ namespace ObjectDesign.Tests
         [Fact]
         public void not_allow_longitude_could_be_greater_than_180()
         {
-            Action sut = () => new Position(Latitude.FromScalar(-100), Longitude.FromScalar(240));
-            sut.Should().Throw<ArgumentException>().WithMessage(CoreStrings.InvalidLatitude);
+            Action position = () => new Position(Latitude.FromScalar(-100), Longitude.FromScalar(240));
+            position.Should().Throw<ArgumentException>().WithMessage(CoreStrings.InvalidLatitude);
+        }
+
+        [Fact]
+        public void be_equal_to_another_position_with_the_same_latitude_and_longitude()
+        {
+            var positionOne = new Position((Latitude)37.1773f, (Longitude)(-3.5985f));
+            var positionTwo = new Position((Latitude)37.1773f, (Longitude)(-3.5985f));
+            positionOne.Should().Be(positionTwo);
         }
 
         [Fact]

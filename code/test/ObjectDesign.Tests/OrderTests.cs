@@ -1,5 +1,6 @@
 ﻿using FluentAssertions;
 using ObjectDesign.CreatingObjects.TrackChangesRecordEvents;
+using System;
 using System.Linq;
 using Xunit;
 
@@ -10,9 +11,9 @@ namespace ObjectDesign.Tests
         [Fact]
         public void allow_to_be_cancelled()
         {
-            var order = Order.Place();
+            var order = Order.Place(new OrderId(Guid.NewGuid()));
             order.Cancel();
-            order.Events.ElementAt(1).Should().BeOfType<OrderCancelled>();
+            order.Events.Last().Should().BeOfType<OrderCancelled>();
         }
     }
 }

@@ -1,15 +1,17 @@
-﻿namespace ObjectDesign.CreatingObjects.TrackChangesRecordEvents
+﻿using System;
+
+namespace ObjectDesign.CreatingObjects.TrackChangesRecordEvents
 {
     public class OrderId
     {
-        private readonly int id;
+        private readonly Guid id;
 
-        public OrderId(int id)
+        public OrderId(Guid id)
         {
             this.id = id;
         }
 
-        public static OrderId New(int id)
+        public static OrderId New(Guid id)
         {
             return new OrderId(id);
         }

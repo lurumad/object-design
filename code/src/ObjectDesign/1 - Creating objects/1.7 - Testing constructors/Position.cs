@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace ObjectDesign.CreatingObjects.TestingConstructors
 {
-    public class Position
+    public class Position : ValueObject
     {
         const float EarthRadiusInKilometers = 6378.0F;
 
@@ -27,6 +28,12 @@ namespace ObjectDesign.CreatingObjects.TestingConstructors
             var c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
 
             return EarthRadiusInKilometers * Convert.ToSingle(c);
+        }
+
+        protected override IEnumerable<object> GetAtomicValues()
+        {
+            yield return Latitude;
+            yield return Longitude;
         }
 
         private float ToRadian(float value)
