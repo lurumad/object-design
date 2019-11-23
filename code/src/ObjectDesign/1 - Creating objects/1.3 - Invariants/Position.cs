@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ObjectDesign.Properties;
+using System;
 
 namespace ObjectDesign.CreatingObjects.Invariants
 {
@@ -8,8 +9,8 @@ namespace ObjectDesign.CreatingObjects.Invariants
 
         public Position(float latitude, float longitude)
         {
-            Ensure.Argument.Is(latitude >= -90 && latitude <= 90, "Latitude should be between -90 and 90");
-            Ensure.Argument.Is(longitude >= -180 && longitude <= 180, "Longitude should be between -90 and 90");
+            Ensure.Argument.Is(latitude >= -90 && latitude <= 90, CoreStrings.InvalidLatitude);
+            Ensure.Argument.Is(longitude >= -180 && longitude <= 180, CoreStrings.InvalidLongitude);
             Latitude = latitude;
             Longitude = longitude;
         }

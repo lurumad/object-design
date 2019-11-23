@@ -9,10 +9,17 @@ namespace ObjectDesign.Tests
     public class position_should
     {
         [Fact]
+        public void not_allow_latitude_could_be_greater_than_180()
+        {
+            Action position = () => new Position(Latitude.FromScalar(-190), Longitude.FromScalar(240));
+            position.Should().Throw<ArgumentException>().WithMessage(CoreStrings.InvalidLatitude);
+        }
+
+        [Fact]
         public void not_allow_longitude_could_be_greater_than_180()
         {
-            Action position = () => new Position(Latitude.FromScalar(-100), Longitude.FromScalar(240));
-            position.Should().Throw<ArgumentException>().WithMessage(CoreStrings.InvalidLatitude);
+            Action position = () => new Position(Latitude.FromScalar(-90), Longitude.FromScalar(240));
+            position.Should().Throw<ArgumentException>().WithMessage(CoreStrings.InvalidLongitude);
         }
 
         [Fact]
